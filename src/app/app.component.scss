@@ -1,0 +1,14 @@
+.top-title {
+    background-color: var(--gray-700);
+    color: var(--gray-100);
+    padding: 1rem 1.5rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 25% auto;
+}
+
+.content-main {
+    padding: 1rem;
+}
