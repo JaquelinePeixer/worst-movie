@@ -1,29 +1,128 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material'as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pior-filme-primary: mat.define-palette(mat.$indigo-palette);
+$pior-filme-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pior-filme-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pior-filme-theme: mat.define-light-theme((color: (primary: $pior-filme-primary,
+      accent: $pior-filme-accent,
+      warn: $pior-filme-warn,
+    )));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($pior-filme-theme);
+
 :root {
-    --white: #fff;
+  --white: #fff;
 
-    --gray-100: #F8F9FA;
-    --gray-400: #78808D;
-    --gray-700: #343A40;
+  --gray-100: #F8F9FA;
+  --gray-200: #F4F4F4;
+  --gray-300: #E2E2E2;
+  --gray-400: #78808D;
+  --gray-700: #343A40;
 
-    --purple-700: #3B3344;
+  --purple-700: #3B3344;
 
-    --blue-400: #358BDE;
-    --blue-500: #2F76BB;
+  --blue-400: #358BDE;
+  --blue-500: #2F76BB;
 
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 body,
 input,
+select,
 textarea,
 button {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  outline: none;
+}
+
+::placeholder ,
+:-ms-input-placeholder,
+::-ms-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+
+form {
+  display: flex;
+
+  select,
+  input {
+    background-color: var(--white);
+    border: 1px solid var(--gray-400);
+    border-radius: 5px;
+    padding: 0.5rem;
+    color: var(--gray-400);
+    flex: 1;
+    font-size: 0.725rem;
+
+    &:focus {
+      border: 1px solid var(--gray-400);
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+mat-card h1 {
+  margin-bottom: 1rem;
+}
+
+.card-content table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  th {
+    background-color: var(--gray-200);
+    color: var(--gray-700);
+  }
+
+  td,
+  th {
+    text-align: left;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-300);
+  }
+
+  tr:nth-child(even) {
+    background-color: var(--gray-100);
+  }
 }

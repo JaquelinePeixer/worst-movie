@@ -1,1 +1,69 @@
-<p>list-movies works!</p>
+<mat-card>
+    <mat-card-header>
+        <h1>List movies</h1>
+    </mat-card-header>
+
+    <mat-card-content class="card-content">
+        <table>
+            <thead>
+                <tr class="header-list-movies">
+                    <th> Id </th>
+                    <th> Year -
+                        <form>
+                            <input type="number" [formControl]="filterYear" placeholder="Filter by year"
+                                (change)="getFilterYear()" />
+                        </form>
+                    </th>
+                    <th> Title </th>
+                    <th> Winner?
+                        <form>
+                            <select placeholder="Yes/No" [formControl]="filterWinner" id="winnerList"
+                                (change)="getFilterWinner()">
+                                <option value="" selected>Yes/No</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let itemList of moviesData">
+                    <td>{{itemList['id']}}</td>
+                    <td>{{itemList['year']}}</td>
+                    <td>{{itemList['title']}}</td>
+                    <td>{{itemList['winner']}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <ul class="pagination">
+            <li>
+                <a (click)="goFirstPage()" class="icon">
+                    <i class="material-icons">first_page</i>
+                </a>
+            </li>
+            <li>
+                <a (click)="previousPage()" class="icon">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                </a>
+            </li>
+
+            <li *ngFor="let page of listPagination" [ngClass]="{'active' : page === this.pagination.number }">
+                <a (click)="handleChangePagination(page)">{{page}}</a>
+            </li>
+            <li>
+                <a (click)="nextPage()" class="icon">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </a>
+            </li>
+
+            <li>
+                <a (click)="goLastPage()" class="icon">
+                    <i class="material-icons">last_page</i>
+                </a>
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,33 @@
+.container-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+    overflow: auto;
+    padding-bottom: 10px;
+    padding: 6px;
+}
+
+.search-content {
+    margin-bottom: 1rem;
+}
+
+.search-content {
+
+    .button-search {
+        background-color: var(--blue-400);
+        padding: 0.5rem;
+        color: var(--white);
+        border: 0;
+        border-radius: 5px;
+        margin-left: 8px;
+
+        &:hover {
+            background-color: var(--blue-500);
+            cursor: pointer;
+        }
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+}

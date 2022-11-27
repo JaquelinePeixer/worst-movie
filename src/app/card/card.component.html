@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-header>
+        <h1>{{titleCard}}</h1>
+    </mat-card-header>
+
+    <mat-card-content class="card-content">
+        <table *ngIf="!tableCount">
+            <thead>
+                <tr>
+                    <th *ngFor="let item of headerList ">
+                        {{item.title}}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let itemList of contentList">
+                    <td *ngFor="let varContent of varContentList">
+                        {{itemList[varContent]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="tableCount">
+            <div class="content-list" *ngFor="let content of contentList; index as i">
+                <h2>{{headerTableCount[i].title}}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let item of headerList ">
+                                {{item.title}}
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let itemList of content">
+                            <td *ngFor="let varContent of varContentList">
+                                {{itemList[varContent]}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

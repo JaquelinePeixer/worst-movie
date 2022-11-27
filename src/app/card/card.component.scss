@@ -1,0 +1,7 @@
+.content-list h2 {
+    margin-bottom: 0.5rem;
+}
+
+.content-list:not(:first-child) h2 {
+    margin-top: 1rem;
+}

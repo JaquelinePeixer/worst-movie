@@ -1,1 +1,53 @@
-<p>dashboard works!</p>
+<div class="container-dashboard">
+
+    <app-card ng-init="this.getWinYear()" [titleCard]="'Dashboard'"
+        [headerList]="[{ title: 'Year'}, { title: 'Win Count'}]" [varContentList]="['year', 'winnerCount']"
+        [contentList]="listYearWinners"></app-card>
+
+    <app-card [titleCard]="'Top 3 studios with winners'" [headerList]="[{ title: 'Name'}, { title: 'Win Count'}]"
+        [varContentList]="['name', 'winCount']" [contentList]="listStudios"></app-card>
+
+    <app-card [titleCard]="'Producers with longest and shortest interval between wins'"
+        [headerList]="[{ title: 'Producer'}, { title: 'Interval'}, { title: 'Previous Year'}, { title: 'Following Year'}]"
+        [varContentList]="['producer', 'interval', 'previousWin', 'followingWin']" [contentList]="valueInterval"
+        [tableCount]="true" [headerTableCount]="[{ title: 'Maximum'}, { title: 'Minimum'}]"></app-card>
+
+    <mat-card>
+        <mat-card-header>
+            <h1>List movie winners by year</h1>
+        </mat-card-header>
+
+        <mat-card-content class="card-content">
+            <div class="search-content">
+
+                <form [formGroup]="filterYear" (ngSubmit)="getFilterYear()">
+
+                    <input type="search" name="searchYear" id="searchYear"  placeholder="Search by year" formControlName="year" />
+
+                    <button class="button-search" type="submit" >
+                        <i class="material-icons">search</i>
+                    </button>
+                </form>
+
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Win Year </th>
+                        <th> Title </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let itemList of yearMovies">
+                        <td>{{itemList['id']}}</td>
+                        <td>{{itemList['year']}}</td>
+                        <td>{{itemList['title']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

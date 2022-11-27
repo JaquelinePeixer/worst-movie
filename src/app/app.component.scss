@@ -1,3 +1,9 @@
+main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .top-title {
     background-color: var(--gray-700);
     color: var(--gray-100);
@@ -6,7 +12,8 @@
 
 .container {
     display: grid;
-    grid-template-columns: 25% auto;
+    grid-template-columns: 15rem auto;
+    height: 100%;
 }
 
 .content-main {
