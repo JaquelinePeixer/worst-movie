@@ -1,7 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { YearWinners } from '../_interface/movies';
 import { MoviesService } from '../_service/movies.service';
 
 @Component({
@@ -20,7 +18,9 @@ export class DashboardComponent implements OnInit {
   value: any;
   valueInterval: any;
 
-
+  filterYear = new FormGroup({
+    year: new FormControl()
+  });
 
   constructor(private movieService: MoviesService) { }
 
@@ -65,15 +65,8 @@ export class DashboardComponent implements OnInit {
       })
   }
 
-  filterYear = new FormGroup({
-    year: new FormControl()
-  });
-
   getYearMovies(year: number) {
-
     let campo = `?winner=true&year=${year}`
-    console.log('campo', campo)
-
     this.movieService.getYearMovies(campo).subscribe(
       (data: any) => {
         this.yearMovies = data;
@@ -82,7 +75,6 @@ export class DashboardComponent implements OnInit {
         console.log('error', error);
       })
   }
-
 
   getFilterYear() {
     this.getYearMovies(this.filterYear.controls.year.value);

@@ -8,17 +8,16 @@
             <thead>
                 <tr class="header-list-movies">
                     <th> Id </th>
-                    <th> Year -
+                    <th> Year
                         <form>
-                            <input type="number" [formControl]="filterYear" placeholder="Filter by year"
-                                (change)="getFilterYear()" />
+                            <input type="number" [(ngModel)]="filterYear" #ctrl="ngModel" placeholder="Filter by year"
+                                (change)="getFilterYearWinner()"  name="filterYear" />
                         </form>
                     </th>
                     <th> Title </th>
                     <th> Winner?
                         <form>
-                            <select placeholder="Yes/No" [formControl]="filterWinner" id="winnerList"
-                                (change)="getFilterWinner()">
+                            <select [(ngModel)]="filterWinner" #ctrl="ngModel" id="winnerList" (change)="getFilterYearWinner()" name="filterWinner">
                                 <option value="" selected>Yes/No</option>
                                 <option value="true">Yes</option>
                                 <option value="false">No</option>

@@ -10,19 +10,14 @@ import { MoviesService } from '../_service/movies.service';
 export class ListMoviesComponent implements OnInit {
 
   moviesData: any = [];
-  setYear: string = "";
-  setWinner: any = "";
+  filterYear: string = "";
+  filterWinner: string = "";
   pagination: any = {
     "size": 15,
     "totalPages": 14,
     "number": 1
   }
   listPagination: any = [];
-
-
-
-  filterYear = new FormControl();
-  filterWinner = new FormControl();
 
   constructor(private movieService: MoviesService) { }
   ngOnInit(): void {
@@ -31,16 +26,17 @@ export class ListMoviesComponent implements OnInit {
 
   getListMovies() {
     let campo = `?page=${this.pagination.number}&size=${this.pagination.size}`
-    if (this.setWinner) {
-      const winner = this.setWinner
+
+    if (this.filterWinner) {
+      const winner = this.filterWinner
       campo = campo + `&winner=${winner}`
     }
 
-    if (this.setYear) {
-      const year = this.setYear
+    if (this.filterYear) {
+      const year = this.filterYear
       campo = campo + `&year=${year}`
     }
-    console.log('campo', campo)
+
     this.movieService.getMoviesData(campo).subscribe(
       (data: any) => {
         this.moviesData = data.content;
@@ -52,7 +48,6 @@ export class ListMoviesComponent implements OnInit {
           }
         })
         this.forListPagination(data.totalPages)
-        console.log('data', data)
       },
       error => {
         console.log('error', error);
@@ -102,16 +97,10 @@ export class ListMoviesComponent implements OnInit {
     this.getListMovies();
   }
 
-  getFilterYear() {
+  getFilterYearWinner() {
     this.pagination.number = 1;
-    this.setYear = this.filterYear.value;
     this.getListMovies();
   }
 
-  getFilterWinner() {
-    this.pagination.number = 1;
-    this.setWinner = this.filterWinner.value;
-    this.getListMovies();
-  }
 
 }
