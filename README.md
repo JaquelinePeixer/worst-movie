@@ -5,10 +5,6 @@ The Worst Movie project uses the following frameworks:
 - UI Material
 - Cypress
 
-## Requirement:
-- @angular/cli
-- NodeJs
-
 ## How to execute the project:
 1. Clone the repository
 2. Install the dependencies: npm install
