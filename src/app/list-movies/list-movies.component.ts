@@ -15,7 +15,7 @@ export class ListMoviesComponent implements OnInit {
   pagination: any = {
     "size": 15,
     "totalPages": 14,
-    "number": 1
+    "number": 0
   }
   listPagination: any = [];
 
@@ -58,8 +58,9 @@ export class ListMoviesComponent implements OnInit {
     this.pagination.totalPages = ttPage;
     this.listPagination = [];
 
-    for (let i = 1; i < ttPage; i++) {
-      this.listPagination.push(i)
+    for (let i = 0; i < ttPage; i++) {
+      const value = i + 1;
+      this.listPagination.push(value)
     }
 
     if (this.listPagination.length == 0) {
@@ -74,7 +75,7 @@ export class ListMoviesComponent implements OnInit {
   }
 
   goFirstPage() {
-    this.pagination.number = 1;
+    this.pagination.number = 0;
     this.getListMovies();
   }
 
@@ -98,7 +99,7 @@ export class ListMoviesComponent implements OnInit {
   }
 
   getFilterYearWinner() {
-    this.pagination.number = 1;
+    this.pagination.number = 0;
     this.getListMovies();
   }
 
